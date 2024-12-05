@@ -1,10 +1,9 @@
-version: '3'
+version: '3.7'
 
 services:
   # Service pour le backend (Flask)
   backend:
-    build:
-      context: ./backend  # Chemin vers le Dockerfile du backend
+    image: yassinegaaloul/flask-backend:latest  # Chemin vers le Dockerfile du backend
     ports:
       - "5000:5000"  # Le backend écoute sur le port 5000
     networks:
@@ -18,8 +17,7 @@ services:
 
   # Service pour le frontend (React)
   frontend:
-    build:
-      context: ./frontend  # Chemin vers le Dockerfile du frontend
+    image: react-frontend  # Chemin vers le Dockerfile du frontend
     ports:
       - "80:80"  # Le frontend sera accessible sur le port 80
     networks:

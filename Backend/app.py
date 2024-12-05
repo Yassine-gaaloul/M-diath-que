@@ -6,7 +6,9 @@ from routes.emprunt_routes import emprunt_bp
 
 
 app = Flask(__name__)
-CORS(app)
+
+CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 
 # Enregistrer les blueprints
 app.register_blueprint(abonne_bp, url_prefix='/api/')
@@ -15,4 +17,5 @@ app.register_blueprint(emprunt_bp, url_prefix='/api/')
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
+

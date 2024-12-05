@@ -7,6 +7,9 @@ WORKDIR /app
 # Copier le fichier requirements.txt dans le container
 COPY requirements.txt .
 
+# Mettre à jour pip (optionnel, mais recommandé)
+RUN pip install --upgrade pip
+
 # Installer les dépendances Python depuis requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
