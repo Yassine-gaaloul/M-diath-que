@@ -7,7 +7,7 @@ abonne_bp = Blueprint('abonne_bp', __name__)
 @abonne_bp.route("/getabonnes", methods=["GET"])
 def list_abonnes():
     abonnés = obtenir_abonnes()
-    return jsonify(abonnés)  # Retourne la liste des abonnés avec _id comme chaîne
+    return jsonify(abonnés)  
 
 
 @abonne_bp.route("/add", methods=["POST"])

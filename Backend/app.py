@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
-# Enregistrer les blueprints
+
 app.register_blueprint(abonne_bp, url_prefix='/api/')
 app.register_blueprint(livre_bp, url_prefix='/api/' )
 app.register_blueprint(emprunt_bp, url_prefix='/api/')

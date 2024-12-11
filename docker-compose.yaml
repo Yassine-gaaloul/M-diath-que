@@ -1,44 +1,44 @@
 version: '3.7'
 
 services:
-  # Service pour le backend (Flask)
+  
   backend:
-    image: yassinegaaloul/flask-backend:latest  # Chemin vers le Dockerfile du backend
+    image: yassinegaaloul/flask-backend:latest  
     ports:
-      - "5000:5000"  # Le backend écoute sur le port 5000
+      - "5000:5000"  
     networks:
       - app-network
     environment:
-      - FLASK_APP=app.py  # Nom du fichier de l'application Flask
-      - FLASK_RUN_HOST=0.0.0.0  # Permet à Flask d'accepter les connexions externes
-      - MONGO_URI=mongodb://mongo:27017/mediatheque  # URI de connexion MongoDB
+      - FLASK_APP=app.py  
+      - FLASK_RUN_HOST=0.0.0.0  
+      - MONGO_URI=mongodb://mongo:27017/mediatheque  
     depends_on:
-      - mongo  # Le backend dépend de MongoDB, donc MongoDB doit être prêt avant
+      - mongo  
 
-  # Service pour le frontend (React)
+
   frontend:
-    image: react-frontend  # Chemin vers le Dockerfile du frontend
+    image: yassinegaaloul/react-frontend 
     ports:
-      - "80:80"  # Le frontend sera accessible sur le port 80
+      - "80:80"  
     networks:
       - app-network
     depends_on:
-      - backend  # Le frontend attend que le backend soit prêt avant de se lancer
+      - backend  
 
-  # Service MongoDB
+  
   mongo:
-    image: mongo:latest  # Utilise l'image officielle de MongoDB
+    image: mongo:latest  
     volumes:
-      - mongo-data:/data/db  # Persister les données MongoDB dans un volume
+      - mongo-data:/data/db  
     networks:
       - app-network
     ports:
-      - "27017:27017"  # Expose le port 27017 pour que MongoDB soit accessible localement
+      - "27017:27017"  
 
-# Volumes pour persister les données MongoDB
+
 volumes:
   mongo-data:
 
 networks:
   app-network:
-    driver: bridge  # Crée un réseau interne pour que les services puissent communiquer entre eux
+    driver: bridge  
